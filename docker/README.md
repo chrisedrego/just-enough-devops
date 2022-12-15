@@ -198,6 +198,15 @@ docker rm CONTAINER_ID
     ```
     docker run -p5000:5000 chrisedrego/pizza:python
     ```
+---
+## Dockerize a Database
+- Running a dettaach
+```
+docker run -d --name=mysql --env="MYSQL_ROOT_PASSWORD=root" --publish 6603:3306 --volume=/home/chrisrego/mysql:/var/lib/mysql mysql
+```
+
+
+
 
 ---
 ## Summary
