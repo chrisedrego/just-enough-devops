@@ -200,7 +200,7 @@ docker rm CONTAINER_ID
     ```
 ---
 ## Dockerize a Database
-- Running a dettaach
+- Running as a dettached container with storage assigned
 ```
 docker run -d --name=mysql --env="MYSQL_ROOT_PASSWORD=root" --publish 6603:3306 --volume=/home/chrisrego/mysql:/var/lib/mysql mysql
 ```
