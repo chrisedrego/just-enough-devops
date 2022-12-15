@@ -178,6 +178,27 @@ docker stop
 docker rm CONTAINER_ID
 ```
 
+## Dockerize API build Docker
+> We can dockerize a python API
+- Creating a Dockerfile
+    ```
+    FROM python:3.8-alpine
+    RUN mkdir /app
+    ADD . /app
+    WORKDIR /app
+    RUN pip install flask
+    CMD ["python", "app.py"]
+    ```
+
+- Build the Image
+    ```
+     docker build -t chrisedrego/pizza:python .
+    ```
+- Run the Image
+    ```
+    docker run -p5000:5000 chrisedrego/pizza:python
+    ```
+
 ---
 ## Summary
 
