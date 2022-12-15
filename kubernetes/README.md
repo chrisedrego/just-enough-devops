@@ -1,4 +1,24 @@
 # Kubernetes
+## Creating a IAM User
+
+```
+aws iam create-group --group-name kops
+
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonEC2FullAccess --group-name kops
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonRoute53FullAccess --group-name kops
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess --group-name kops
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/IAMFullAccess --group-name kops
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonVPCFullAccess --group-name kops
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonSQSFullAccess --group-name kops
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonEventBridgeFullAccess --group-name kops
+
+aws iam create-user --user-name kops
+
+aws iam add-user-to-group --user-name kops --group-name kops
+
+aws iam create-access-key --user-name kops
+```
+
 
 ## Creating your kubernetes cluster
 
@@ -46,3 +66,24 @@ export KUBECONFIG=~/pizza/config
 export KOPS_STATE_STORE=s3://pizza-kops-bucket
 export KOPS_CLUSTER_NAME=pizza.k8s.local
 ```
+
+---
+## Pod Example
+
+export KUBECONFIG=/home/ubuntu/just-enough-devops/kubernetes/config
+kops export kubecfg --name pizza.k8s.local  --admin
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bhau-banner
+  namespace: default
+spec:
+  containers:
+  - name: bhau-banner
+    image: chrisedrego/piza:bhau-banner
+    ports:
+    - containerPort: 80
+```
+
