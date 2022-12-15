@@ -130,6 +130,68 @@ ls -al
 > Bonus-Point: Container isnt really an OS but you could see that it has virtualized and now as some sort of a VFS which is layed out (Magic of Docker)
 
 ## Using Storage for Docker
+> Docker by default is ephmeral, to bring in the persistent storage we have the host machine on which its running
+- Searching the image
+```
+docker images
 ```
 
+- Run and add the mappings for host storage path
+```
+docker run -d -p8080:80 -v /repo/personal/just-enough-devops/docker/asset:/usr/share/nginx/html --name new-pizza2 nginx
+```
+---
+## Sharing is Caring: Share your docker file to the rest of the world
+> Sharing your dockerimage to the rest of the world using Dockerhub Registry
+
+- Authenticate to dockerhub using CLI
+```
+docker login -u'USERNAME'
+```
+
+- Searching the Images
+```
+docker images
+```
+
+- Pushing the Images
+```
+docker push chrisedrego/pizza
+```
+
+---
+## Time to clean up the Pizza
+> Its now time to clean up the Pizza image and container
+
+- Find the container 
+```
+docker ps
+```
+
+- Stop the container
+```
+docker stop
+```
+
+- Delete the container
+```
+docker rm CONTAINER_ID
+```
+
+---
+## Summary
+
+```
+docker search 
+docker pull
+docker build
+docker images
+docker run
+docker ps
+docker exec
+docker stop
+docker login
+docker push
+docker rmi
+docker rm
 ```
